@@ -18,16 +18,16 @@
     <div class="row">
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
-                <strong>Name:</strong>
-                {{ $iphone->name }}
-            </div>
+                <strong>Name:</strong><br><br>
+                <h2>{{ $iphone->name }}<h2>
+            </div><br><br>
         </div>
    		<br>
    		<br>
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
-                <strong>Details:</strong>
-                {{ $iphone->detail }}
+                <strong>Details:</strong><br><br>
+                <h5>{{ $iphone->detail }}</h5>
             </div>
         </div>
     </div>
