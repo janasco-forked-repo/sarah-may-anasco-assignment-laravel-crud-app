@@ -24,9 +24,9 @@ class iPhoneAjaxController extends Controller
                     ->addIndexColumn()
                     ->addColumn('action', function($row){
    
-                           $btn = '<a href="javascript:void(0)" data-toggle="tooltip"  data-id="'.$row->id.'" data-original-title="Edit" class="edit btn btn-primary btn-sm editiPhone">Edit</a>';
+                           $btn = '<a href="javascript:void(0)" data-toggle="tooltip"  data-id="'.$row->id.'" data-original-title="Edit" class="edit btn btn-link btn-info btn-just-icon editiPhone"><i class="material-icons">edit</i><div class="ripple-container"></div></a>';
    
-                           $btn = $btn.' <a href="javascript:void(0)" data-toggle="tooltip"  data-id="'.$row->id.'" data-original-title="Delete" class="btn btn-danger btn-sm deleteiPhone">Delete</a>';
+                           $btn = $btn.' <a href="javascript:void(0)" data-toggle="tooltip"  data-id="'.$row->id.'" data-original-title="Delete" class=" btn btn-link btn-danger btn-just-icon remove deleteiPhone"><i class="material-icons">close</i><div class="ripple-container"></div></a>';
     
                             return $btn;
                     })

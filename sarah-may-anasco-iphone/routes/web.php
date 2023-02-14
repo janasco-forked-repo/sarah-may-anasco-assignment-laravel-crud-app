@@ -15,4 +15,8 @@ use App\Http\Controllers\iPhoneAjaxController;
 */
  
 
+Route::get('/', function () {
+    return view('welcome');
+});
+
 Route::resource('iphones', iPhoneAjaxController::class);
