@@ -4,8 +4,8 @@
     <title>Sarah May Anasco - Laravel 9 AJAX CRUD</title>
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta charset="utf-8" />
-    <link rel="apple-touch-icon" sizes="76x76" href="{{ URL::asset('assets/img/apple-icon.png'); }}">
-    <link rel="icon" type="image/png" href="{{ URL::asset('assets/img/favicon.png'); }}">
+    <link rel="apple-touch-icon" sizes="76x76" href="{{ URL::asset('assets-pro/img/apple-icon.png'); }}">
+    <link rel="icon" type="image/png" href="{{ URL::asset('assets-pro/img/favicon.png'); }}">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <meta content='width=device-width, initial-scale=1.0, shrink-to-fit=no' name='viewport' />
     <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" />
@@ -20,211 +20,154 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
     <script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
  
-
-    <link href="{{ URL::asset('assets/css/material-dashboard.css?v=2.1.2'); }}" rel="stylesheet">
-    <link href="{{ URL::asset('assets/demo/demo.css'); }}" rel="stylesheet">
-
+ 
 </head>
-<body class="sidebar-mini">
-        
-
-    <div class="main-panel"> 
-
-        <nav class="navbar navbar-expand-lg navbar-transparent navbar-absolute fixed-top ">
-            <div class="container-fluid">
-              <div class="navbar-wrapper">
-                <div class="navbar-minimize">
-                  <button id="minimizeSidebar" class="btn btn-just-icon btn-white btn-fab btn-round">
-                    <i class="material-icons text_align-center visible-on-sidebar-regular">more_vert</i>
-                    <i class="material-icons design_bullet-list-67 visible-on-sidebar-mini">view_list</i>
-                  </button>
+<body class="profile-page">
+         
+    <div class="page-header header-filter header-small" data-parallax="true" style="padding-top: 103px;background-image: url(&apos;{{ URL::asset('assets-pro/img/bg9.jpg'); }}&apos;);">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8 ml-auto mr-auto text-center" style="padding-bottom: 80px;">
+                    <h1 class="title" style="color: cornsilk;">Sarah May G. Añasco</h1>
+                    <h6 style="color: cornsilk;">This is my Laravel 9 using AJAX from jquery with CRUD or Create, Read, Update, and Delete</h6>
+                    <p style="color: greenyellow;">Subject - Integrated Programming and Technologies 1</p>
                 </div>
-                <a class="navbar-brand" href="javascript:;">DataTables.net</a>
-              </div>
-              <button class="navbar-toggler" type="button" data-toggle="collapse" aria-controls="navigation-index" aria-expanded="true" aria-label="Toggle navigation">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="navbar-toggler-icon icon-bar"></span>
-                <span class="navbar-toggler-icon icon-bar"></span>
-                <span class="navbar-toggler-icon icon-bar"></span>
-              </button>
-              <div class="collapse navbar-collapse justify-content-end">
-                <form class="navbar-form">
-                  <div class="input-group no-border">
-                    <input type="text" value="" class="form-control" placeholder="Search...">
-                    <button type="submit" class="btn btn-white btn-round btn-just-icon">
-                      <i class="material-icons">search</i>
-                      <div class="ripple-container"></div>
-                    </button>
-                  </div>
-                </form>
-                <ul class="navbar-nav">
-                  <li class="nav-item">
-                    <a class="nav-link" href="javascript:;">
-                      <i class="material-icons">dashboard</i>
-                      <p class="d-lg-none d-md-block">
-                        Stats
-                      </p>
-                    </a>
-                  </li>
-                  <li class="nav-item dropdown">
-                    <a class="nav-link" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                      <i class="material-icons">notifications</i>
-                      <span class="notification">5</span>
-                      <p class="d-lg-none d-md-block">
-                        Some Actions
-                      </p>
-                    </a>
-                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
-                      <a class="dropdown-item" href="#">Mike John responded to your email</a>
-                      <a class="dropdown-item" href="#">You have 5 new tasks</a>
-                      <a class="dropdown-item" href="#">You're now friend with Andrew</a>
-                      <a class="dropdown-item" href="#">Another Notification</a>
-                      <a class="dropdown-item" href="#">Another One</a>
-                    </div>
-                  </li>
-                  <li class="nav-item dropdown">
-                    <a class="nav-link" href="javascript:;" id="navbarDropdownProfile" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                      <i class="material-icons">person</i>
-                      <p class="d-lg-none d-md-block">
-                        Account
-                      </p>
-                    </a>
-                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownProfile">
-                      <a class="dropdown-item" href="#">Profile</a>
-                      <a class="dropdown-item" href="#">Settings</a>
-                      <div class="dropdown-divider"></div>
-                      <a class="dropdown-item" href="#">Log out</a>
-                    </div>
-                  </li>
-                </ul>
-              </div>
             </div>
-        </nav>
+        </div>
+    </div>
+    <div class="main main-raised" style="padding-top: 42px;"> 
+        <div class="profile-content">
+            <div class="container">
+                 
+
+                <div class="row"> 
+                    <div class="col-xs-2 follow">
+                       <a class="btn btn-fab btn-primary" id="createNewiPhone" data-toggle="modal" data-target="createNewiPhone" title="Add new iPhone">
+                            <i class="material-icons">add</i>
+                        </a>
+                    </div>
+                </div>
+                <br>
+                <br>
+
+                <div class="row">
+                    <div class="col-md-12">
+
+                        <table class="table table-bordered data-table">
+                            <colgroup>
+                                <col width="5%">
+                                <col width="10%">
+                                <col width="10%">
+                                <col width="10%">
+                                <col width="10%">
+                                <col width="10%">
+                                <col width="15%">
+                                <col width="10%">
+                            </colgroup>
+                            <thead>
+                                <tr>
+                                    <th>No</th>
+                                    <th>iPhone Model</th>
+                                    <th>Released</th>
+                                    <th>Discontinued</th>
+                                    <th>Capacities</th>
+                                    <th>Processor</th>
+                                    <th>OS</th>
+                                    <th width="280px">Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>  
+            </div>
+        </div>
+    </div>
 
 
-        <div class="content">
-            <div class="container-fluid"> 
-                <div class="material-datatables">
-                    <h1>Sarah May Anasco - Laravel 9 AJAX CRUD</h1>
-                    <a class="btn btn-success" href="javascript:void(0)" id="createNewiPhone"> Create New iPhone</a>
-                    <table class="table table-bordered data-table">
-                        <colgroup>
-                            <col width="5%">
-                            <col width="10%">
-                            <col width="15%">
-                            <col width="15%">
-                            <col width="10%">
-                            <col width="10%">
-                            <col width="15%">
-                            <col width="5%">
-                        </colgroup>
-                        <thead>
-                            <tr>
-                                <th>No</th>
-                                <th>iPhone Model</th>
-                                <th>Released</th>
-                                <th>Discontinued</th>
-                                <th>Capacities</th>
-                                <th>Processor</th>
-                                <th>OS</th>
-                                <th width="280px">Action</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                        </tbody>
-                    </table>
+    <div class="page-header header-filter header-small" data-parallax="true" style="padding-top: 103px;background-image: url(&apos;{{ URL::asset('assets-pro/img/bg9.jpg'); }}&apos;);">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8 ml-auto mr-auto text-center" style="padding-bottom: 80px;">
+                    <h1 class="title" style="color: cornsilk;">Sarah May G. Añasco</h1>
+                    <h6 style="color: cornsilk;">This is my Laravel 9 using AJAX from jquery with CRUD or Create, Read, Update, and Delete</h6>
+                    <p style="color: greenyellow;">Subject - Integrated Programming and Technologies 1</p>
                 </div>
             </div>
         </div>
     </div>
 
-     
-<div class="modal fade" id="ajaxiPhoneModel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h4 class="modal-title" id="modelHeading"></h4>
-            </div>
-            <div class="modal-body">
-                <form id="iphoneForm" name="iphoneForm" class="form-horizontal">
-                   <input type="hidden" name="iphone_id" id="iphone_id">
 
-                    <div class="form-group">
-                        <label for="name" class="col-sm-2 control-label">iPhone Model</label>
-                        <div class="col-sm-12">
-                            <input type="text" class="form-control" id="model" name="model" placeholder="Enter Model" value="" maxlength="50" required="">
-                        </div>
-                    </div>
-       
-                    <div class="form-group">
-                        <label class="col-sm-2 control-label">Released</label>
-                        <div class="col-sm-12">
-                            <textarea id="released" name="released" required="" placeholder="Enter Released" class="form-control"></textarea>
-                        </div>
-                    </div>
 
-                    <div class="form-group">
-                        <label class="col-sm-2 control-label">discontinued</label>
-                        <div class="col-sm-12">
-                            <textarea id="discontinued" name="discontinued" required="" placeholder="Enter Discontinued" class="form-control"></textarea>
-                        </div>
-                    </div>
 
-                    <div class="form-group">
-                        <label class="col-sm-2 control-label">Capacities</label>
-                        <div class="col-sm-12">
-                            <textarea id="capacities" name="capacities" required="" placeholder="Enter Capacities" class="form-control"></textarea>
+ 
+    <div class="modal fade" id="ajaxiPhoneModel" tabindex="-1" aria-hidden="true" role="dialog" aria-labelledby="myModalLabel" >
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title" id="modelHeading"></h4>
+                </div>
+                <div class="modal-body">
+                    <form id="iphoneForm" name="iphoneForm" class="form-horizontal">
+                       <input type="hidden" name="iphone_id" id="iphone_id">
+
+                        <div class="form-group">
+                            <label for="name" class="col-sm-2 control-label">iPhone Model</label>
+                            <div class="col-sm-12">
+                                <input type="text" class="form-control" id="model" name="model" placeholder="Enter Model" value="" maxlength="50" required="">
+                            </div>
                         </div>
-                    </div>
-        
-                    <div class="form-group">
-                        <label class="col-sm-2 control-label">Processor</label>
-                        <div class="col-sm-12">
-                            <textarea id="processor" name="processor" required="" placeholder="Enter processor" class="form-control"></textarea>
+           
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">Released</label>
+                            <div class="col-sm-12">
+                                <textarea id="released" name="released" required="" placeholder="Enter Released" class="form-control"></textarea>
+                            </div>
                         </div>
-                    </div>
-        
-                    <div class="form-group">
-                        <label class="col-sm-2 control-label">OS</label>
-                        <div class="col-sm-12">
-                            <textarea id="os" name="os" required="" placeholder="Enter OS" class="form-control"></textarea>
+
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">discontinued</label>
+                            <div class="col-sm-12">
+                                <textarea id="discontinued" name="discontinued" required="" placeholder="Enter Discontinued" class="form-control"></textarea>
+                            </div>
                         </div>
-                    </div>
-        
-                    <div class="col-sm-offset-2 col-sm-10">
-                     <button type="submit" class="btn btn-primary" id="saveBtn" value="create">Save changes
-                     </button>
-                    </div>
-                </form>
+
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">Capacities</label>
+                            <div class="col-sm-12">
+                                <textarea id="capacities" name="capacities" required="" placeholder="Enter Capacities" class="form-control"></textarea>
+                            </div>
+                        </div>
+            
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">Processor</label>
+                            <div class="col-sm-12">
+                                <textarea id="processor" name="processor" required="" placeholder="Enter processor" class="form-control"></textarea>
+                            </div>
+                        </div>
+            
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">OS</label>
+                            <div class="col-sm-12">
+                                <textarea id="os" name="os" required="" placeholder="Enter OS" class="form-control"></textarea>
+                            </div>
+                        </div>
+            
+                        <div class="col-sm-offset-2 col-sm-10">
+                         <button type="submit" class="btn btn-primary" id="saveBtn" value="create">Save changes
+                         </button>
+                        </div>
+                    </form>
+                </div>
             </div>
         </div>
     </div>
-</div>
 
-    <script src="{{ URL::asset('assets/js/core/jquery.min.js'); }}"></script> 
-    <script src="{{ URL::asset('assets/js/core/popper.min.js'); }}"></script> 
-    <script src="{{ URL::asset('assets/js/core/bootstrap-material-design.min.js'); }}"></script> 
-    <script src="{{ URL::asset('assets/js/plugins/perfect-scrollbar.jquery.min.js'); }}"></script> 
-    <script src="{{ URL::asset('assets/js/plugins/moment.min.js'); }}"></script> 
-    <script src="{{ URL::asset('assets/js/plugins/sweetalert2.js'); }}"></script> 
-    <script src="{{ URL::asset('assets/js/plugins/jquery.validate.min.js'); }}"></script> 
-    <script src="{{ URL::asset('assets/js/plugins/jquery.bootstrap-wizard.js'); }}"></script> 
-    <script src="{{ URL::asset('assets/js/plugins/bootstrap-selectpicker.js'); }}"></script> 
-    <script src="{{ URL::asset('assets/js/plugins/bootstrap-datetimepicker.min.js'); }}"></script> 
-    <script src="{{ URL::asset('assets/js/plugins/jquery.dataTables.min.js'); }}"></script> 
-    <script src="{{ URL::asset('assets/js/plugins/bootstrap-tagsinput.js'); }}"></script> 
-    <script src="{{ URL::asset('assets/js/plugins/jasny-bootstrap.min.js'); }}"></script> 
-    <script src="{{ URL::asset('assets/js/plugins/fullcalendar.min.js'); }}"></script> 
-    <script src="{{ URL::asset('assets/js/plugins/jquery-jvectormap.js'); }}"></script> 
-    <script src="{{ URL::asset('assets/js/plugins/nouislider.min.js'); }}"></script> 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/core-js/2.4.1/core.js"></script> 
-    <script src="{{ URL::asset('assets/js/plugins/arrive.min.js'); }}"></script> 
-    <script src="{{ URL::asset('assets/js/plugins/chartist.min.js'); }}"></script> 
-    <script src="{{ URL::asset('assets/js/plugins/bootstrap-notify.js'); }}"></script>  
-    <script src="{{ URL::asset('assets/js/material-dashboard.js?v=2.1.2'); }}"></script> 
-    <script src="{{ URL::asset('assets/demo/demo.js'); }}"></script> 
+ 
 
 </body>
+ 
 
 <script type="text/javascript">
   $(function () {
@@ -302,7 +245,7 @@
     --------------------------------------------*/
     $('#saveBtn').click(function (e) {
         e.preventDefault();
-        $(this).html('Sending..');
+        $(this).html('Adding..');
       
         $.ajax({
           data: $('#iphoneForm').serialize(),
@@ -313,8 +256,8 @@
        
               $('#iphoneForm').trigger("reset");
               $('#ajaxiPhoneModel').modal('hide');
-              table.draw();
-           
+              table.draw(); 
+              $('#saveBtn').html('Save');
           },
           error: function (data) {
               console.log('Error:', data);
