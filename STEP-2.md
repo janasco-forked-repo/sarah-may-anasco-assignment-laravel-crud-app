@@ -1,14 +1,6 @@
-next, open your code editor like sublime text and open the folder (your-name)
 
+> In your cmd, Make sure you are in the folder location
 
-then open file .env
+> Then run the project by using the following command:
 
-
-then change the database name into:
-
-
-DB_DATABASE=laravel_ajaxcrud_your-name
-
-
-then save
-
+> php artisan serve

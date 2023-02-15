@@ -1,24 +1,14 @@
-Make sure you have an internet connection to download laravel app files 
+> Make sure you have an internet connection 
 
-Download and install composer in your computer
+> Download and install composer in your computer
 
-Run your xampp and run mysql
+> Run your xampp and start mysql and apache
 
-Open cmd
+> Create database in your phpadmin like (laravel_ajaxcrud_sarahmay)
 
-then change dir location from this location folder
+> Import the backup database
 
-this is to save all code generated where the folder located or set
-
-then from the cmd type the following command to install laravel: (your-name)
+> Then download the code from github
 
 
-
-composer create-project laravel/laravel (your-name) --prefer-dist
-
-
-
-then type the following command
-
-
-cd (your-name)
+> Open cmd
