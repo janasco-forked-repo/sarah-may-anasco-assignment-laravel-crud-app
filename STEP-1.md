@@ -8,7 +8,11 @@
 
 > Import the backup database
 
-> Then download the code from github
+> Then download the source-code from github
 
 
 > Open cmd
+
+> Then run : composer update 
+
+> and enter
