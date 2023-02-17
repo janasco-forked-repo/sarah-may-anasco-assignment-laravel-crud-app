@@ -136,7 +136,7 @@
         <input type="hidden" name="iphone_update_id" id="iphone_update_id">
         <input type="hidden" name="iphone_update_image" id="iphone_update_image">
         <div class="modal-body p-4 bg-light">
-          <div class="mt-2" id="update_image">
+          <div class="mt-2" id="iphone_image">
 
           </div>
           <div class="my-2">
