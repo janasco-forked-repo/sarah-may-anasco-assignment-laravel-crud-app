@@ -148,7 +148,7 @@
             <input type="text" name="model" id="model" class="form-control" placeholder="Model" required>
           </div>
           <div class="my-2">
-            <label for="released">released</label>
+            <label for="released">Released</label>
             <input type="text" name="released" id="released" class="form-control" placeholder="Released" required>
           </div>
           <div class="my-2">
