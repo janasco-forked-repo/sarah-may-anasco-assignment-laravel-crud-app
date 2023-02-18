@@ -13,13 +13,20 @@ class IphoneController extends Controller
         return view('index');
     }
 
+    // handle view an iphone ajax request
+    public function view(Request $request) {
+        $id = $request->id;
+        $iphone_view = Iphone::find($id);
+        return response()->json($iphone_view);
+    }
+
     // handle fetch all eamployees ajax request
     public function read() {
         $read_iphones = Iphone::all();
         $output = '';
         if ($read_iphones->count() > 0) {
             $output .= '<table class="table table-striped table-sm text-center align-middle">
-            <thead>
+            <thead> 
               <tr>
                 <th>ID</th>
                 <th>iPhone Image</th>
@@ -36,7 +43,7 @@ class IphoneController extends Controller
             foreach ($read_iphones as $read_iphone) {
                 $output .= '<tr>
                 <td>' . $read_iphone->id . '</td>
-                <td><img src="storage/images/' . $read_iphone->iphone_image . '" width="50" class="img-thumbnail "></td>
+                <td><img src="files/public/images/' . $read_iphone->iphone_image . '" width="50" class="img-thumbnail "></td>
                 <td>' . $read_iphone->model . '</td>
                 <td>' . $read_iphone->released . '</td>
                 <td>' . $read_iphone->discontinued . '</td>
@@ -44,6 +51,8 @@ class IphoneController extends Controller
                 <td>' . $read_iphone->processor . '</td>
                 <td>' . $read_iphone->os . '</td>
                 <td>
+                  <a href="#" id="' . $read_iphone->id . '" class="text-success mx-1 viewIcon" data-bs-toggle="modal" data-bs-target="#viewIphoneModal"><i class="bi-info-circle h4"></i></a>
+
                   <a href="#" id="' . $read_iphone->id . '" class="text-success mx-1 editIcon" data-bs-toggle="modal" data-bs-target="#editIphoneModal"><i class="bi-pencil-square h4"></i></a>
 
                   <a href="#" id="' . $read_iphone->id . '" class="text-danger mx-1 deleteIcon"><i class="bi-trash h4"></i></a>
@@ -53,15 +62,15 @@ class IphoneController extends Controller
             $output .= '</tbody></table>';
             echo $output;
         } else {
-            echo '<h1 class="text-center text-secondary my-5">No record present in the database!</h1>';
+            echo '<h1 class="text-center text-secondary my-5">Empty data in your database! You can add one.☝️</h1>';
         }
     }
 
     // handle insert a new iphone ajax request
     public function create(Request $request) {
-        $file = $request->file('iphone_image');
+        $file = $request->file('add_iphone_image');
         $fileName = time() . '.' . $file->getClientOriginalExtension();
-        $file->storeAs('public/images', $fileName);
+        $file->storeAs('public/images', $fileName, 'files');
 
         $iphoneData = ['model' => $request->model, 'released' => $request->released, 'discontinued' => $request->discontinued, 'capacities' => $request->capacities, 'processor' => $request->processor, 'os' => $request->os, 'iphone_image' => $fileName];
         Iphone::create($iphoneData);
@@ -84,7 +93,7 @@ class IphoneController extends Controller
         if ($request->hasFile('iphone_image')) {
             $file = $request->file('iphone_image');
             $fileName = time() . '.' . $file->getClientOriginalExtension();
-            $file->storeAs('public/images', $fileName);
+            $file->storeAs('public/images', $fileName, 'files');
             if ($iphone_update->iphone_image) {
                 Storage::delete('public/images/' . $iphone_update->iphone_image);
             }

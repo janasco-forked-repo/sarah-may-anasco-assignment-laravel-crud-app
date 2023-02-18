@@ -14,9 +14,28 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [IphoneController::class, 'index']);
-Route::post('/create', [IphoneController::class, 'create'])->name('create');
-Route::get('/read', [IphoneController::class, 'read'])->name('read');
-Route::post('/update', [IphoneController::class, 'update'])->name('update');
-Route::delete('/delete', [IphoneController::class, 'delete'])->name('delete');
-Route::get('/edit', [IphoneController::class, 'edit'])->name('edit');
+Route::controller(IphoneController::class)->group(function () {
+
+	Route::view('/', 'index');
+
+	Route::prefix('iphone')->group(function () {
+
+		Route::post('/create', 'create');
+		Route::get('/read', 'read');
+		Route::post('/update', 'update');
+		Route::delete('/delete/{id}', 'delete');
+		Route::get('/edit/{id}', 'edit');
+		Route::get('/search/{keyword}', 'search');
+		Route::get('/view/{id}', 'view');
+
+		Route::PermanentRedirect('','/');
+	});
+
+});
+
+Route::get('storage/{filename}', function ($filename)
+{
+    return Image::make(storage_path('public/' . $filename))->response();
+}); 
+
+ 

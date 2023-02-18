@@ -7,10 +7,12 @@
   <meta name="csrf-token" content="{{ csrf_token() }}">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Sarah May Anasco - CRUD App Laravel 10 & Ajax</title>
-  <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.2/css/bootstrap.min.css' />
-  <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.5.0/font/bootstrap-icons.min.css' />
-  <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs5/dt-1.10.25/datatables.min.css" /> 
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+
+  <link rel='stylesheet' href='/bootstrap.min.css' />
+  <link rel='stylesheet' href='/bootstrap-icons-1.5.0/bootstrap-icons.min.css' />
+  <link rel="stylesheet" type="text/css" href="/datatables.min.css" /> 
+  <script src="/jquery.min.js"></script>
+
   <style type="text/css">
         
        html {
@@ -84,8 +86,8 @@
         @csrf
         <div class="modal-body p-4 bg-light">
           <div class="my-2">
-            <label for="iphone_image">Select iPhone Image</label>
-            <input type="file" name="iphone_image" class="form-control" required>
+            <label for="add_iphone_image">Select iPhone Image</label>
+            <input type="file" name="add_iphone_image" class="form-control" required>
           </div>
           <div class="my-2">
             <label for="model">Model</label>
@@ -141,7 +143,7 @@
           </div>
           <div class="my-2">
             <label for="iphone_image">Select iPhone Image</label>
-            <input type="file" name="iphone_image" class="form-control">
+            <input type="file" id="iphone_image" name="iphone_image" class="form-control">
           </div>
           <div class="my-2">
             <label for="model">Model</label>
@@ -178,6 +180,57 @@
 </div>
 {{-- edit iphone modal end --}}
 
+{{-- view iphone modal start --}}
+<div class="modal fade" id="viewIphoneModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+  data-bs-backdrop="static" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">View Iphone</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <form action="#" method="POST" id="view_iphone_form" enctype="multipart/form-data">
+        @csrf
+        <input type="hidden" name="iphone_view_id" id="iphone_view_id">
+        <input type="hidden" name="iphone_view_image" id="iphone_view_image">
+        <div class="modal-body p-4 bg-light">
+          <div class="mt-2" id="view_iphone_image">
+
+          </div>
+          <div class="my-2">
+            <label for="view_model">Model</label>
+            <input type="text" name="view_model" id="view_model" class="form-control" placeholder="Model" required onfocus="this.blur()">
+          </div>
+          <div class="my-2">
+            <label for="released">Released</label>
+            <input type="text" name="view_released" id="view_released" class="form-control" placeholder="Released" required onfocus="this.blur()">
+          </div>
+          <div class="my-2">
+            <label for="view_discontinued">Discontinued</label>
+            <input type="text" name="view_discontinued" id="view_discontinued" class="form-control" placeholder="Discontinued" required onfocus="this.blur()">
+          </div>
+          <div class="my-2">
+            <label for="view_capacities">Capacities</label>
+            <input type="text" name="view_capacities" id="view_capacities" class="form-control" placeholder="Capacities" required onfocus="this.blur()">
+          </div>
+          <div class="my-2">
+            <label for="view_processor">Processor</label>
+            <input type="text" name="view_processor" id="view_processor" class="form-control" placeholder="Processor" required onfocus="this.blur()">
+          </div>
+          <div class="my-2">
+            <label for="view_os">Operating System</label>
+            <input type="text" name="view_os" id="view_os" class="form-control" placeholder="Operating System" required onfocus="this.blur()">
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button> 
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+{{-- view iphone modal end --}}
+
 <body class="bg-light"> 
 <div class="bg"></div>
 <div class="bg bg2"></div>
@@ -196,7 +249,11 @@
             <div class="card shadow">
               <div class="card-header bg-danger d-flex justify-content-between align-items-center" style="background-color:#795548!important;">
                 <h3 class="text-light">Manage Iphones</h3>
-                <button class="btn btn-light" data-bs-toggle="modal" data-bs-target="#addIphoneModal"><i
+                 
+                <div class="my-2">
+                  <input type="text" name="search_form" id="search_form" class="form-control" placeholder="Search" hidden>
+                </div>
+                <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addIphoneModal"><i
                     class="bi-plus-circle me-2"></i>Add New Iphone</button>
               </div>
               <div class="card-body" id="show_all_iphones">
@@ -213,13 +270,75 @@
       </div> 
       <br><br>
 
+  
+  <script src='/bootstrap.bundle.min.js'></script> 
+  <script type="text/javascript" src="/datatables.min.js"></script>
+  <script src="/sweetalert2@11.js"></script>
  
-  <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js'></script>
-  <script src='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.2/js/bootstrap.bundle.min.js'></script>
-  <script type="text/javascript" src="https://cdn.datatables.net/v/bs5/dt-1.10.25/datatables.min.js"></script>
-  <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   <script>
     $(function() {
+
+        var typeTimer;
+
+      // search iphone ajax request
+      $('#search_form').on('keyup', function() {
+            var keyword = $(this).val();
+            clearTimeout(typeTimer);
+
+            typeTimer = setTimeout(function() {
+                searchiPhone(keyword);
+            }, 2000);
+        });
+
+
+      function searchiPhone(keyword) 
+        {
+            if (keyword.trim() == "") {
+                getProductData();
+                return;
+            }
+
+            $.get({
+                url: "/iphone/search/" + keyword,
+                success: function(res)
+                {
+                    $('.table-s').html(res.html);
+                    addUpdateAction();
+                    addDeleteAction();
+                },
+                error: function()
+                {
+                    console.log('err');
+                }
+            });
+        }
+
+      // view iphone ajax request
+      $(document).on('click', '.viewIcon', function(e) {
+        e.preventDefault();
+        let id = $(this).attr('id');
+        $.ajax({
+          url: '/iphone/view/' + id,
+          method: 'get',
+          data: {
+            _token: '{{ csrf_token() }}'
+          },
+          success: function(response) {
+            $("#view_model").val(response.model);
+            $("#view_released").val(response.released);
+            $("#view_discontinued").val(response.discontinued);
+            $("#view_capacities").val(response.capacities);
+            $("#view_processor").val(response.processor);
+            $("#view_os").val(response.os);
+            $("#view_iphone_image").html(
+              `<img src="files/public/images/${response.iphone_image}" width="100" class="img-fluid img-thumbnail">`);
+            $("#iphone_view_id").val(response.id);
+            $("#iphone_view_image").val(response.iphone_image);
+          }
+        });
+      });
+
+
 
       // add new iphone ajax request
       $("#add_iphone_form").submit(function(e) {
@@ -227,7 +346,7 @@
         const fd = new FormData(this);
         $("#add_iphone_btn").text('Adding...');
         $.ajax({
-          url: '{{ route('create') }}',
+          url: '/iphone/create',
           method: 'post',
           data: fd,
           cache: false,
@@ -255,10 +374,9 @@
         e.preventDefault();
         let id = $(this).attr('id');
         $.ajax({
-          url: '{{ route('edit') }}',
+          url: '/iphone/edit/' + id,
           method: 'get',
           data: {
-            id: id,
             _token: '{{ csrf_token() }}'
           },
           success: function(response) {
@@ -269,7 +387,7 @@
             $("#processor").val(response.processor);
             $("#os").val(response.os);
             $("#iphone_image").html(
-              `<img src="storage/images/${response.iphone_image}" width="100" class="img-fluid img-thumbnail">`);
+              `<img src="files/public/images/${response.iphone_image}" width="100" class="img-fluid img-thumbnail">`);
             $("#iphone_update_id").val(response.id);
             $("#iphone_update_image").val(response.iphone_image);
           }
@@ -282,7 +400,7 @@
         const fd = new FormData(this);
         $("#edit_iphone_btn").text('Updating...');
         $.ajax({
-          url: '{{ route('update') }}',
+          url: '/iphone/update',
           method: 'post',
           data: fd,
           cache: false,
@@ -306,6 +424,7 @@
       });
 
       // delete iphone ajax request
+      // i use sweetalert2 for confirmation before delete
       $(document).on('click', '.deleteIcon', function(e) {
         e.preventDefault();
         let id = $(this).attr('id');
@@ -321,10 +440,9 @@
         }).then((result) => {
           if (result.isConfirmed) {
             $.ajax({
-              url: '{{ route('delete') }}',
+              url: '/iphone/delete/' + id,
               method: 'delete',
-              data: {
-                id: id,
+              data: { 
                 _token: csrf
               },
               success: function(response) {
@@ -346,7 +464,7 @@
 
       function fetchAllIphones() {
         $.ajax({
-          url: '{{ route('read') }}',
+          url: '/iphone/read',
           method: 'get',
           success: function(response) {
             $("#show_all_iphones").html(response);
