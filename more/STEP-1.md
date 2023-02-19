@@ -1,18 +1,29 @@
-> Make sure you have an internet connection 
+## HELLO 👋 I'm SARAH MAY ANASCO
 
-> Download and install composer in your computer
-
-> Run your xampp and start mysql and apache
-
-> Create database in your phpadmin like (laravel_ajaxcrud_sarahmay)
-
-> Import the backup database
-
-> Then download the source-code from github
+## Follow the bellow steps to setup my laravel project assignment :)
 
 
-> Open cmd
 
-> Then run : composer update 
 
-> and enter
+# Make sure you have an internet connection 
+# And, we will update vendor files (based in composer.json)
+
+# Open cmd and type:
+
+> composer update
+
+
+
+
+# Then run this following line in your cmd:
+# This will create a database name baseed on migration from dabase folder
+
+> php artisan migrate
+
+
+
+
+# Lets show the frontend
+# lets run:
+
+> php artisan serve
